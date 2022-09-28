@@ -1,149 +1,135 @@
-
+#!/usr/bin/env python3
 
 def print_hi(name):
     print(f'Hi, {name}')
 
-    a = [5, 6, 7]
-    print(a)
-    print(len(a))
+import math
+def distance(p1, p2):
+    # d=√((x_2-x_1)²+(y_2-y_1)²)
+    #NEM JO ERTEKET AD VISSZA
+    # TODO...
+    d = math.sqrt(((p1[1]-p1[0])*(p1[1]-p1[0]))+((p2[1]-p2[0])*(p2[1]-p2[0])))
+    return d
 
-    b = [True, 3.14, 2022, 'cc']
-    print(b)
+def get_movie_info():
+    #adat lekerese egy adatbazisbol
+    return ("Total Recall", 1990, 7.5)
 
-    a.append(8)
-    print(a)
+#############################################################
+def main():
 
-    c = []
-    print(c)
-    c.append(1)
-    c.append(2)
-    c.append(3)
-    print(c)
+    for i in range(5):
+        print("B")
 
-    z = [1, 2] == [1, 2]
-    print(z)
+    li1 = list(range(22,37))
+    li2 = list(range(45,32,-1))
 
-    d = a + b
-    print(d)
+## STRINGBUFFER ERTELME ES ALKALMAZASA
+##naiv megkozelites:
+## koltseges mert egy annyi resz stringet hoz letre ahanyszor lefut = koltseges minden teren (memoria, szamitasi kapacitas)
+res = ""
+for i in range(1,15+1):
+    res += str(i)
 
-    e = [1,2,3]
-    f = e
-    f[0] = 100
-    print(e[0])
+print(res)
 
-    f = e[:]
-    f[0] = 99
-    print(f)
+##stringbuffer
+##letrehoz egy tombot amibe elkezdi osszegyujteni, majd ezt konkatanalja egy string-e
+parts = []
 
-    li = [1,2,3]
-    for y in li:
-        print(y)
+for i in range(1,15+1):
+    parts.append(str(i))
 
-    for y in li:
-        y *=2
+res = "".join(parts)
+print(res)
 
-    for y in li:
-        print(y)
+t = (3, 7, 2, 9)
 
-    size = len(li)
-    i = 0
-    while i < size:
-        li[i] *= 2
-        i += 1
+print(t[0])
 
-    for y in li:
-        print(y)
+t = (True, 3.14, 42)
 
-    print(list("python3"))
+print(t[0])
 
-    li = [1, 2, 3, 4, 5, 6, 7, 8]
-
-    paros = []
-
-    for szam in li:
-        if szam % 2 == 0:
-            paros.append(szam)
-
-    for szam in paros:
-        print(szam)
-
-    print(12 in paros)
-    s = "C, C++, Python, Rust"
-    print("--" in s)
-    print("++" in s)
-
-    print(3, "Hello", True)
-    print(3, "Hello", True, sep="")
-    print(3, "Hello", True, sep="", end="\t")
-    print(3, "Hello", True, sep="--")
-    print("hello", end=""); print("world")
-    import sys
-    print("hello", file=sys.stderr)
-
-    a = [5,8,9,3,1]
-    print(a)
-    x = a.pop(0)
-    print(x)
-    print(a)
-
-    x = a.pop() ##alapertelmezetten az utolso elem
-    print(x)
-    print(a)
-
-    ##Verem: sima list, append()-el belerak, pop()-al kivesz HASZNALHATO!
-    ##Sor: sima list, append()-el belerak, pop(0)-al kivesz az elejerol LASSU!!!
-
-    ##IGY KELL SORT CSINALNI HA SZUKSEGES
-    from collections import deque
-    q = deque([3, 4, 5])
-    print(q)
-    q.append(6)
-    q.append(7)
-    print(q)
-    q.popleft()
-    print(q)
-    ##-----------------------------------
-
-    ##ZH-N LESZ REVERSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    a = [3, 21, -2, 3892, 52]
-    print(a)
-    print(sorted(a))
-    print(sorted(a, reverse=True))
-    print(sorted(a)[::-1])##Ez nem kell csak fancy
-    ##ZHZHZHZHZHZHZHZHZHZHZHZHZHZHZHZHZHZHZHZHZHZHZH
-
-    a = sorted(a)
-    print(a)
-
-    a = [3, 9, -2, 4]
-    print(a)
-    a.sort()
-    print(a)
-
-    a = [3, 9, -2, 4]
-    for e in sorted(a):
-        print(e)
-
-    print(a)
-
-    def szoroz(a):
-        szum = 1
-        for e in a:
-            szum *= e
-        return szum
-
-    print(szoroz([8, 3, 2]))
-    print(szoroz([]))
-
-    a = ["aa", "bb", "cc", "dd"]
-    print(a)
-    print(":::".join(a))
-    s = ":".join(a)
-    print(s)
-    print(s.split(":"))
-    print("sadsadsa          melwmqkrnqlwi             vbjkabxaséq".split())
+## 1 elemu tuple-nel kell a vesszo!!!
+single = ("hi",) ##<---------- VESSZO
+print(type(single))
+print(single)
 
 
-####################################################################
+##elhagyhato a zarojel pl: x, y = 3, 5 DE ezt nem kell hasznalni
+(x, y) = (3, 5)
+
+print(x)
+print(y)
+
+x, y = y, x
+print(x)
+print(y)
+
+pont = (1, 2)
+point = (6, 5)
+print('A ket pont kozti tavolsag:', distance(pont, point))
+
+
+t = get_movie_info()
+title = t[0]
+date = t[1]
+imdb = t[2]
+print(title, date, imdb)
+
+title, date, imdb = get_movie_info()
+print(title, date, imdb)
+
+#########LIST COMPREHENSION
+nums = [1, 2, 3, 4]
+squares = [n*n for n in nums]
+print(squares)
+
+##altalanosan: [expr for var in list]
+
+##opcionalisan if is lehet benne
+nums = [8, 3, 2, 1, 5, 9, 2]
+small = [n for n in nums if n <=2]
+print(small)
+
+##EXERCIZING
+
+li = ['auto', 'villamos', 'metro']
+result = [s.upper()+'!' for s in li]
+print(result)
+
+li = ['aladar', 'bela', 'cecil']
+result = [s.capitalize() for s in li]
+print(result)
+
+li = [0 for i in range(10)]
+print(li)
+
+li = list(range(1, 10+1))
+result = [n*2 for n in li]
+print(result)
+li = list(range(2, 20+1, 2))
+print(li)
+
+li = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+result = [int(s) for s in li]
+print(result)
+
+li = '1234567'
+result = [int(s[s]) for s in li]
+print(result)
+
+
+
+
+
+
+
+#########LIST COMPREHENSION ENDS
+
+
+
+#############################################################
 if __name__ == '__main__':
     print_hi('PyCharm')
