@@ -95,16 +95,24 @@ print(small)
 
 ##EXERCIZING
 
+######1
+
 li = ['auto', 'villamos', 'metro']
 result = [s.upper()+'!' for s in li]
 print(result)
+
+######2
 
 li = ['aladar', 'bela', 'cecil']
 result = [s.capitalize() for s in li]
 print(result)
 
+######3
+
 li = [0 for i in range(10)]
 print(li)
+
+######4
 
 li = list(range(1, 10+1))
 result = [n*2 for n in li]
@@ -112,19 +120,79 @@ print(result)
 li = list(range(2, 20+1, 2))
 print(li)
 
+######5
+
 li = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 result = [int(s) for s in li]
 print(result)
 
-li = '1234567'
-result = [int(s[s]) for s in li]
+######6
+
+li = "1234567"
+result = [int(s) for s in li]
 print(result)
 
+######7
 
+li = 'The quick brown fox jumps over the lazy dog'
+result = [len(s) for s in li.split()]
+print(result)
 
+######8
 
+li = "python is an awesome language"
+result = [s[0] for s in li.split()]
+print(result)
 
+######9
 
+li = 'The quick brown fox jumps over the lazy dog'
+result = [(s, len(s)) for s in li.split()]
+print(result)
+
+######10
+
+li = list(range(0, 10, 2))
+print(li)
+
+######11
+
+li = list(range(20))
+result = [n*n for n in li if n*n % 2 == 0]
+print(result)
+
+######12
+
+li = list(range(20))
+result = [n*n for n in li if (repr(n*n)[-1:] == '4')]
+print(result)
+
+######13
+
+li = [chr(n).capitalize() for n in list(range(65, 91))]
+parts = []
+for i in range(len(li)):
+    parts.append(li[i])
+
+result = "".join(parts)
+print(result)
+
+######14
+
+li = [' apple ', ' banana ', ' kiwi']
+result = [s.strip() for s in li]
+print(result)
+
+######15
+
+li = [1, 0, 1, 1, 0, 1, 0, 0]
+parts = []
+for i in range(len(li)):
+    parts.append(str(li[i]))
+
+result = "".join(parts)
+print(result)
+print(type(result))
 
 #########LIST COMPREHENSION ENDS
 
